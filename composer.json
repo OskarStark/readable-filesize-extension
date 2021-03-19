@@ -1,0 +1,40 @@
+{
+    "name": "oskarstark/readable-filesize-extension",
+    "type": "library",
+    "description": "A Twig extension to convert filesize to human readable string",
+    "keywords": [
+        "twig",
+        "twig-extension",
+        "filesize",
+        "human-readable"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oskar Stark",
+            "email": "oskarstark@googlemail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "twig/twig": "^2.6 || ^3.0"
+    },
+    "require-dev": {
+        "ergebnis/test-util": "^1.4",
+        "friendsofphp/php-cs-fixer": "^2.18.3",
+        "phpunit/phpunit": "^8.5 || ^9.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "OskarStark\\Twig\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OskarStark\\Twig\\Tests\\": "tests/"
+        }
+    }
+}
