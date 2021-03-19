@@ -1,9 +1,17 @@
 # vim: set tabstop=8 softtabstop=8 noexpandtab:
-phpstan:
-	docker run --rm -it -w=/app -v ${PWD}:/app oskarstark/phpstan-ga:0.12.81 analyse src/ --level=7
+.PHONY: phpstan
+phpstan: vendor
+	php vendor/bin/phpstan analyse -c phpstan.neon.dist
 
-cs:
-	docker run --rm -it -w /app -v ${PWD}:/app oskarstark/php-cs-fixer-ga:2.16.7
+.PHONY: cs
+cs: vendor
+	php vendor/bin/php-cs-fixer fix --diff --diff-format=udiff --verbose
 
-test:
+.PHONY: test
+test: vendor
 	php vendor/bin/phpunit -v
+
+.PHONY: vendor
+vendor: composer.json composer.lock
+	symfony composer validate
+	symfony composer install --no-interaction --no-progress --no-scripts

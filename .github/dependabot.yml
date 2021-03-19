@@ -10,6 +10,7 @@ updates:
         directory: "/"
         labels:
             - "dependency"
+            - "automerge"
         open-pull-requests-limit: 5
         package-ecosystem: "github-actions"
         schedule:

@@ -90,11 +90,11 @@ final class ReadableFileSizeExtensionTest extends TestCase
      *
      * @dataProvider readableFilesizeProvider
      */
-    public function readableFilesize(string $expected, int $precision, int|float $value): void
+    public function readableFilesize(string $expected, int $precision, int | float $value): void
     {
         $extension = new ReadableFilesizeExtension();
 
-        self::assertSame(
+        static::assertSame(
             $expected,
             $extension->readableFilesize($value, $precision)
         );
@@ -107,12 +107,10 @@ final class ReadableFileSizeExtensionTest extends TestCase
     {
         yield ['1 B', 0, 1];
         yield ['1 KB', 0, 1024];
-        yield ['1 MB', 0, 1024*1024];
-        yield ['1 GB', 0, 1024*1024*1024];
-        yield ['1 TB', 0, 1024*1024*1024*1024];
-        yield ['1 PB', 0, 1024*1024*1024*1024*1024];
-        yield ['1 EB', 0, 1024*1024*1024*1024*1024*1024];
-        yield ['1 ZB', 0, 1024*1024*1024*1024*1024*1024*1024];
-        yield ['1 YB', 0, 1024*1024*1024*1024*1024*1024*1024*1024];
+        yield ['1 MB', 0, 1024 * 1024];
+        yield ['1 GB', 0, 1024 * 1024 * 1024];
+        yield ['1 TB', 0, 1024 * 1024 * 1024 * 1024];
+        yield ['1 PB', 0, 1024 * 1024 * 1024 * 1024 * 1024];
+        yield ['1 EB', 0, 1024 * 1024 * 1024 * 1024 * 1024 * 1024];
     }
 }

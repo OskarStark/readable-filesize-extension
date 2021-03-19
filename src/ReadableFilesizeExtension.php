@@ -32,11 +32,11 @@ final class ReadableFilesizeExtension extends AbstractExtension
         ];
     }
 
-    public function readableFilesize(float|int $bytes, int $precision = 2): string
+    public function readableFilesize(float | int $bytes, int $precision = 2): string
     {
         Assert::greaterThanEq($bytes, 0);
 
-        $units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+        $units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB'];
         $bytes = max($bytes, 0);
         $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
         $pow = min($pow, count($units) - 1);
@@ -44,6 +44,6 @@ final class ReadableFilesizeExtension extends AbstractExtension
         // Uncomment one of the following alternatives
         $bytes /= pow(1024, $pow);
 
-        return round($bytes, $precision) . ' ' . $units[$pow];
+        return round($bytes, $precision).' '.$units[$pow];
     }
 }
