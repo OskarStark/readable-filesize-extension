@@ -102,5 +102,19 @@ final class ReadableFilesizeExtensionTest extends TestCase
         yield ['1 TB', 0, 1024 * 1024 * 1024 * 1024];
         yield ['1 PB', 0, 1024 * 1024 * 1024 * 1024 * 1024];
         yield ['1 EB', 0, 1024 * 1024 * 1024 * 1024 * 1024 * 1024];
+
+        // Precision 1
+        yield ['1.5 KB', 1, 1536];
+        yield ['2.5 KB', 1, 2560];
+        yield ['1.5 MB', 1, 1572864];
+        yield ['2.5 MB', 1, 2621440];
+        yield ['1.5 GB', 1, 1610612736];
+
+        // Precision 2
+        yield ['1.25 KB', 2, 1280];
+        yield ['2.75 KB', 2, 2816];
+        yield ['1.25 MB', 2, 1310720];
+        yield ['2.75 MB', 2, 2883584];
+        yield ['1.25 GB', 2, 1342177280];
     }
 }
