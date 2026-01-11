@@ -52,7 +52,6 @@ jobs:
               with:
                   coverage: "none"
                   php-version: ${{ matrix.php-version }}
-                  tools: composer:v2
 
             - name: "Composer install"
               uses: "ramsey/composer-install@v3"
@@ -87,7 +86,6 @@ jobs:
               with:
                   coverage: "none"
                   php-version: "${{ matrix.php-version }}"
-                  tools: "composer:v2"
 
             - name: Add PHPUnit matcher
               run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
