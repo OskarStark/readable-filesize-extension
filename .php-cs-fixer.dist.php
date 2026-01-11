@@ -14,7 +14,7 @@ $finder = PhpCsFixer\Finder::create()
     ->in('tests')
 ;
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@Symfony' => true,
@@ -28,7 +28,7 @@ return PhpCsFixer\Config::create()
         'ordered_class_elements' => true,
         'ordered_imports' => true,
         'php_unit_test_case_static_method_calls' => true,
-        'psr4' => true,
+        'psr_autoloading' => true,
         'single_line_throw' => false,
     ])
     ->setFinder($finder)

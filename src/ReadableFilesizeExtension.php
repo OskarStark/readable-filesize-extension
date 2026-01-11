@@ -32,7 +32,7 @@ final class ReadableFilesizeExtension extends AbstractExtension
         ];
     }
 
-    public function readableFilesize(float | int $bytes, int $precision = 2): string
+    public function readableFilesize(float|int $bytes, int $precision = 2): string
     {
         Assert::greaterThanEq($bytes, 0);
 

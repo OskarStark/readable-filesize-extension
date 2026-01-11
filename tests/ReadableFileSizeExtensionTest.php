@@ -47,7 +47,7 @@ final class ReadableFileSizeExtensionTest extends TestCase
      */
     public function numberOfFilters(): void
     {
-        $extension = new ReadableFileSizeExtension();
+        $extension = new ReadableFilesizeExtension();
 
         static::assertCount(1, $extension->getFilters());
     }
@@ -59,7 +59,7 @@ final class ReadableFileSizeExtensionTest extends TestCase
      */
     public function filters(): void
     {
-        $extension = new ReadableFileSizeExtension();
+        $extension = new ReadableFilesizeExtension();
 
         $functions = $extension->getFilters();
 
@@ -81,7 +81,7 @@ final class ReadableFileSizeExtensionTest extends TestCase
             $value
         ));
 
-        $extension = new ReadableFileSizeExtension();
+        $extension = new ReadableFilesizeExtension();
         $extension->readableFilesize($value);
     }
 
@@ -90,7 +90,7 @@ final class ReadableFileSizeExtensionTest extends TestCase
      *
      * @dataProvider readableFilesizeProvider
      */
-    public function readableFilesize(string $expected, int $precision, int | float $value): void
+    public function readableFilesize(string $expected, int $precision, int|float $value): void
     {
         $extension = new ReadableFilesizeExtension();
 
