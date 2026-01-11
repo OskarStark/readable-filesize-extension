@@ -21,8 +21,9 @@
         "webmozart/assert": "^1.11"
     },
     "require-dev": {
-        "ergebnis/test-util": "^1.4",
+        "ergebnis/data-provider": "^3.0",
         "ergebnis/php-cs-fixer-config": "^6.0",
+        "fakerphp/faker": "^1.23",
         "phpstan/phpstan": "^2.1",
         "phpunit/phpunit": "^10.5"
     },
