@@ -101,7 +101,7 @@ final class ReadableFilesizeExtensionTest extends TestCase
     }
 
     /**
-     * @return \Generator<array{0: string, 1: int, 2: int}>
+     * @return \Generator<array{0: non-empty-string, 1: int, 2: positive-int}>
      */
     public static function readableFileSizeProvider(): iterable
     {
