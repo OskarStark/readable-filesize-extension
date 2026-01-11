@@ -43,6 +43,6 @@ final class ReadableFilesizeExtension extends AbstractExtension
 
         $bytes /= pow(1024, $pow);
 
-        return round($bytes, $precision).' '.$units[$pow];
+        return round($bytes, $precision).' '.$units[(int) $pow];
     }
 }
