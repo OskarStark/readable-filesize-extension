@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/*
+/**
  * This file is part of oskarstark/readable-filesize-extension.
  *
  * (c) Oskar Stark <oskarstark@googlemail.com>
@@ -20,14 +20,14 @@ use Webmozart\Assert\Assert;
 final class ReadableFilesizeExtension extends AbstractExtension
 {
     /**
-     * @return TwigFilter[]
+     * @return list<TwigFilter>
      */
     public function getFilters(): array
     {
         return [
             new TwigFilter(
                 'readable_filesize',
-                [$this, 'readableFilesize']
+                [$this, 'readableFilesize'],
             ),
         ];
     }
@@ -39,9 +39,9 @@ final class ReadableFilesizeExtension extends AbstractExtension
         $units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB'];
         $bytes = max($bytes, 0);
         $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
-        $pow = min($pow, count($units) - 1);
+        $pow = min($pow, \count($units) - 1);
 
-        $bytes /= pow(1024, $pow);
+        $bytes /= 1024 ** $pow;
 
         return round($bytes, $precision).' '.$units[(int) $pow];
     }
