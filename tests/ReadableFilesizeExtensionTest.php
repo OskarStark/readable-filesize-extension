@@ -27,7 +27,7 @@ final class ReadableFilesizeExtensionTest extends TestCase
 {
     use Helper;
 
-    #[Test()]
+    #[Test]
     public function extendAbstractExtension(): void
     {
         self::assertClassExtends(
@@ -36,13 +36,13 @@ final class ReadableFilesizeExtensionTest extends TestCase
         );
     }
 
-    #[Test()]
+    #[Test]
     public function isFinal(): void
     {
         self::assertClassIsFinal(ReadableFilesizeExtension::class);
     }
 
-    #[Test()]
+    #[Test]
     public function numberOfFilters(): void
     {
         $extension = new ReadableFilesizeExtension();
@@ -51,7 +51,7 @@ final class ReadableFilesizeExtensionTest extends TestCase
     }
 
     #[Depends('numberOfFilters')]
-    #[Test()]
+    #[Test]
     public function filters(): void
     {
         $extension = new ReadableFilesizeExtension();
@@ -64,7 +64,7 @@ final class ReadableFilesizeExtensionTest extends TestCase
     }
 
     #[DataProviderExternal(\Ergebnis\Test\Util\DataProvider\IntProvider::class, 'lessThanZero')]
-    #[Test()]
+    #[Test]
     public function readableThrowsExceptionOn(int $value): void
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -78,7 +78,7 @@ final class ReadableFilesizeExtensionTest extends TestCase
     }
 
     #[DataProvider('readableFilesizeProvider')]
-    #[Test()]
+    #[Test]
     public function readableFilesize(string $expected, int $precision, float|int $value): void
     {
         $extension = new ReadableFilesizeExtension();
