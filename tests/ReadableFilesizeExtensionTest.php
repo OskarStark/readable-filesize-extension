@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/*
+/**
  * This file is part of oskarstark/readable-filesize-extension.
  *
  * (c) Oskar Stark <oskarstark@googlemail.com>
@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
-final class ReadableFileSizeExtensionTest extends TestCase
+final class ReadableFilesizeExtensionTest extends TestCase
 {
     use Helper;
 
@@ -30,7 +30,7 @@ final class ReadableFileSizeExtensionTest extends TestCase
     {
         self::assertClassExtends(
             AbstractExtension::class,
-            ReadableFilesizeExtension::class
+            ReadableFilesizeExtension::class,
         );
     }
 
@@ -47,9 +47,9 @@ final class ReadableFileSizeExtensionTest extends TestCase
      */
     public function numberOfFilters(): void
     {
-        $extension = new ReadableFileSizeExtension();
+        $extension = new ReadableFilesizeExtension();
 
-        static::assertCount(1, $extension->getFilters());
+        self::assertCount(1, $extension->getFilters());
     }
 
     /**
@@ -59,13 +59,13 @@ final class ReadableFileSizeExtensionTest extends TestCase
      */
     public function filters(): void
     {
-        $extension = new ReadableFileSizeExtension();
+        $extension = new ReadableFilesizeExtension();
 
         $functions = $extension->getFilters();
 
         $filter = $functions[0];
-        static::assertInstanceOf(TwigFilter::class, $filter);
-        static::assertSame('readable_filesize', $filter->getName());
+        self::assertInstanceOf(TwigFilter::class, $filter);
+        self::assertSame('readable_filesize', $filter->getName());
     }
 
     /**
@@ -76,12 +76,12 @@ final class ReadableFileSizeExtensionTest extends TestCase
     public function readableThrowsExceptionOn(int $value): void
     {
         $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage(sprintf(
+        $this->expectExceptionMessage(\sprintf(
             'Expected a value greater than or equal to 0. Got: %s',
-            $value
+            $value,
         ));
 
-        $extension = new ReadableFileSizeExtension();
+        $extension = new ReadableFilesizeExtension();
         $extension->readableFilesize($value);
     }
 
@@ -90,20 +90,20 @@ final class ReadableFileSizeExtensionTest extends TestCase
      *
      * @dataProvider readableFilesizeProvider
      */
-    public function readableFilesize(string $expected, int $precision, int | float $value): void
+    public function readableFilesize(string $expected, int $precision, float|int $value): void
     {
         $extension = new ReadableFilesizeExtension();
 
-        static::assertSame(
+        self::assertSame(
             $expected,
-            $extension->readableFilesize($value, $precision)
+            $extension->readableFilesize($value, $precision),
         );
     }
 
     /**
-     * @return \Generator<array{0: string, 1: int, 2: int}>
+     * @return \Generator<array{0: non-empty-string, 1: int, 2: positive-int}>
      */
-    public function readableFileSizeProvider(): \Generator
+    public static function readableFileSizeProvider(): iterable
     {
         yield ['1 B', 0, 1];
         yield ['1 KB', 0, 1024];
