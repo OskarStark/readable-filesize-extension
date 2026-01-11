@@ -20,7 +20,7 @@ use Webmozart\Assert\Assert;
 final class ReadableFilesizeExtension extends AbstractExtension
 {
     /**
-     * @return list<TwigFilter>
+     * @return array<TwigFilter>
      */
     public function getFilters(): array
     {
