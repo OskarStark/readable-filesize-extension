@@ -58,7 +58,6 @@ $ruleSet = Config\RuleSet\Php81::create()
         'php_unit_test_annotation' => [
             'style' => 'annotation',
         ],
-        'phpdoc_list_type' => false,
         'php_unit_test_class_requires_covers' => false,
     ]));
 
