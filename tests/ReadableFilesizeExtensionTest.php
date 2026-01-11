@@ -15,6 +15,10 @@ namespace OskarStark\Twig\Tests;
 
 use Ergebnis\Test\Util\Helper;
 use OskarStark\Twig\ReadableFilesizeExtension;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
+use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
@@ -23,9 +27,7 @@ final class ReadableFilesizeExtensionTest extends TestCase
 {
     use Helper;
 
-    /**
-     * @test
-     */
+    #[Test()]
     public function extendAbstractExtension(): void
     {
         self::assertClassExtends(
@@ -34,17 +36,13 @@ final class ReadableFilesizeExtensionTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test()]
     public function isFinal(): void
     {
         self::assertClassIsFinal(ReadableFilesizeExtension::class);
     }
 
-    /**
-     * @test
-     */
+    #[Test()]
     public function numberOfFilters(): void
     {
         $extension = new ReadableFilesizeExtension();
@@ -52,11 +50,8 @@ final class ReadableFilesizeExtensionTest extends TestCase
         self::assertCount(1, $extension->getFilters());
     }
 
-    /**
-     * @test
-     *
-     * @depends numberOfFilters
-     */
+    #[Depends('numberOfFilters')]
+    #[Test()]
     public function filters(): void
     {
         $extension = new ReadableFilesizeExtension();
@@ -68,11 +63,8 @@ final class ReadableFilesizeExtensionTest extends TestCase
         self::assertSame('readable_filesize', $filter->getName());
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\Test\Util\DataProvider\IntProvider::lessThanZero()
-     */
+    #[DataProviderExternal(\Ergebnis\Test\Util\DataProvider\IntProvider::class, 'lessThanZero')]
+    #[Test()]
     public function readableThrowsExceptionOn(int $value): void
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -85,11 +77,8 @@ final class ReadableFilesizeExtensionTest extends TestCase
         $extension->readableFilesize($value);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider readableFilesizeProvider
-     */
+    #[DataProvider('readableFilesizeProvider')]
+    #[Test()]
     public function readableFilesize(string $expected, int $precision, float|int $value): void
     {
         $extension = new ReadableFilesizeExtension();
