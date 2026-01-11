@@ -51,8 +51,8 @@ final class ReadableFilesizeExtensionTest extends TestCase
         self::assertCount(1, $extension->getFilters());
     }
 
-    #[Depends('numberOfFilters')]
     #[Test]
+    #[Depends('numberOfFilters')]
     public function filters(): void
     {
         $extension = new ReadableFilesizeExtension();
@@ -64,8 +64,8 @@ final class ReadableFilesizeExtensionTest extends TestCase
         self::assertSame('readable_filesize', $filter->getName());
     }
 
-    #[DataProviderExternal(IntProvider::class, 'lessThanZero')]
     #[Test]
+    #[DataProviderExternal(IntProvider::class, 'lessThanZero')]
     public function readableThrowsExceptionOn(int $value): void
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -78,8 +78,8 @@ final class ReadableFilesizeExtensionTest extends TestCase
         $extension->readableFilesize($value);
     }
 
-    #[DataProvider('readableFilesizeProvider')]
     #[Test]
+    #[DataProvider('readableFilesizeProvider')]
     public function readableFilesize(string $expected, int $precision, float|int $value): void
     {
         $extension = new ReadableFilesizeExtension();
