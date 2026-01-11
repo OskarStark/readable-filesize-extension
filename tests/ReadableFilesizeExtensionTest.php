@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace OskarStark\Twig\Tests;
 
+use Ergebnis\Test\Util\DataProvider\IntProvider;
 use Ergebnis\Test\Util\Helper;
 use OskarStark\Twig\ReadableFilesizeExtension;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -63,7 +64,7 @@ final class ReadableFilesizeExtensionTest extends TestCase
         self::assertSame('readable_filesize', $filter->getName());
     }
 
-    #[DataProviderExternal(\Ergebnis\Test\Util\DataProvider\IntProvider::class, 'lessThanZero')]
+    #[DataProviderExternal(IntProvider::class, 'lessThanZero')]
     #[Test]
     public function readableThrowsExceptionOn(int $value): void
     {
