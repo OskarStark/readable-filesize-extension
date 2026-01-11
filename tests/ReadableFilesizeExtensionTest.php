@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
-final class ReadableFileSizeExtensionTest extends TestCase
+final class ReadableFilesizeExtensionTest extends TestCase
 {
     use Helper;
 
