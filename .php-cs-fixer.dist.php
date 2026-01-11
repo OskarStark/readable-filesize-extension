@@ -55,9 +55,11 @@ $ruleSet = Config\RuleSet\Php81::create()
             'strict' => false,
         ],
         'php_unit_internal_class' => false,
-        'php_unit_test_annotation' => [
-            'style' => 'annotation',
+        'php_unit_test_annotation' => false,
+        'attribute_empty_parentheses' => [
+            'use_parentheses' => false,
         ],
+        'ordered_attributes' => false,
         'php_unit_test_class_requires_covers' => false,
     ]));
 
