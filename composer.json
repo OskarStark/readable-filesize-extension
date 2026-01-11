@@ -24,7 +24,7 @@
         "ergebnis/test-util": "^1.4",
         "friendsofphp/php-cs-fixer": "^2.18.3",
         "phpstan/phpstan": "^0.12.82",
-        "phpunit/phpunit": "^8.5 || ^9.0"
+        "phpunit/phpunit": "^9.0"
     },
     "config": {
         "sort-packages": true
