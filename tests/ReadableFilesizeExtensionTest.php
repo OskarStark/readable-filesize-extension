@@ -13,8 +13,7 @@ declare(strict_types=1);
 
 namespace OskarStark\Twig\Tests;
 
-use Ergebnis\Test\Util\DataProvider\IntProvider;
-use Ergebnis\Test\Util\Helper;
+use Ergebnis\DataProvider\IntProvider;
 use OskarStark\Twig\ReadableFilesizeExtension;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
@@ -26,21 +25,21 @@ use Twig\TwigFilter;
 
 final class ReadableFilesizeExtensionTest extends TestCase
 {
-    use Helper;
-
     #[Test]
     public function extendAbstractExtension(): void
     {
-        self::assertClassExtends(
-            AbstractExtension::class,
-            ReadableFilesizeExtension::class,
-        );
+        $extension = new ReadableFilesizeExtension();
+
+        self::assertInstanceOf(AbstractExtension::class, $extension);
     }
 
     #[Test]
     public function isFinal(): void
     {
-        self::assertClassIsFinal(ReadableFilesizeExtension::class);
+        $extension = new ReadableFilesizeExtension();
+        $reflection = new \ReflectionClass($extension);
+
+        self::assertTrue($reflection->isFinal());
     }
 
     #[Test]
