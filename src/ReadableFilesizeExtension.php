@@ -27,7 +27,7 @@ final class ReadableFilesizeExtension extends AbstractExtension
         return [
             new TwigFilter(
                 'readable_filesize',
-                [$this, 'readableFilesize'],
+                $this->readableFilesize(...),
             ),
         ];
     }
