@@ -23,7 +23,7 @@ jobs:
                   php-version: "8.1"
 
             - name: "Install dependencies with composer"
-              uses: "ramsey/composer-install@v3"
+              uses: "ramsey/composer-install@v4"
 
             - name: "Run friendsofphp/php-cs-fixer"
               run: "vendor/bin/php-cs-fixer fix --diff --dry-run --verbose"
@@ -44,7 +44,7 @@ jobs:
                   php-version: "8.2"
 
             - name: "Install dependencies with composer"
-              uses: "ramsey/composer-install@v3"
+              uses: "ramsey/composer-install@v4"
 
             - name: "Run rector/rector"
               run: "vendor/bin/rector --dry-run"
@@ -82,7 +82,7 @@ jobs:
                   php-version: ${{ matrix.php-version }}
 
             - name: "Composer install"
-              uses: "ramsey/composer-install@v3"
+              uses: "ramsey/composer-install@v4"
               with:
                   composer-options: "--prefer-dist"
 
@@ -119,7 +119,7 @@ jobs:
               run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
             - name: "Composer install"
-              uses: "ramsey/composer-install@v3"
+              uses: "ramsey/composer-install@v4"
               with:
                   dependency-versions: "${{ matrix.dependencies }}"
                   composer-options: "--prefer-dist"
